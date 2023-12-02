@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/059dc50343.js" crossorigin="anonymous"></script>
+    <title>Music Player App</title>
+</head>
+<body>
+
+
+
+    <div class="container">
+
+<div class="music-player">
+
+
+    <nav>
+
+
+        <div class="circle">
+            <i class="fa-solid fa-angles-left"></i>
+        </div>
+
+
+
+        <div class="circle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        
+
+    </nav>
+
+    <img src="./468-thumbnail.png" alt="" class="song-img">
+
+           <h1>Go Neffex</h1>
+           <p>IT IS AYAD FAV SONG OF ANIME</p>
+
+           <audio id="song">
+            <source src="/Go! - NEFFEX (1).mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+           </audio>
+
+
+
+           <!-- <input type="range" value="0"  id="progress"  placeholder=".">  -->
+
+           <form>
+
+            <label for="points">.</label><br>
+          
+            <input type="range" id="points" name="points" min="1" max="100"><br>
+          
+            
+          </form>
+
+
+           <div class="contrl">
+           <div> <i class="fa-solid fa-backward"></i></div>
+           <div onclick="playPause()"> <i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+           <div> <i class="fa-solid fa-forward"></i></div>
+        </div>
+            
+
+
+</div>
+
+    </div>
+    
+
+
+
+
+
+
+<script>
+ const song = document.getElementById('song');
+  const playPause = document.getElementById('ctrlIcon'); 
+  const progressBar = document.getElementById('points');
+
+ let isPlaying = false;
+  playPause.addEventListener('click', function() {
+     if (isPlaying) {
+         song.pause();
+          playPause.classList.remove('fa-pause');
+           playPause.classList.add('fa-play');
+         } 
+     else { song.play();
+         playPause.classList.remove('fa-play');
+          playPause.classList.add('fa-pause'); }
+          
+          
+          isPlaying = !isPlaying; });
+          
+          
+           song.addEventListener('timeupdate', function() {
+             let progress = (song.currentTime / song.duration) * 
+             100; progressBar.value = progress; });
+             
+             progressBar.addEventListener('click', function() { 
+                let progress = (progressBar.value / 100) * 
+                 song.duration;
+                  song.currentTime = progress; });
+                  
+                  
+                  
+                  </script>
+
+
+</body>
+</html>
